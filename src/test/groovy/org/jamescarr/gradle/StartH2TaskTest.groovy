@@ -56,8 +56,10 @@ class StartH2TaskTest {
         launcher.run()
 
 
-        assert stream.toString().contains('Web Console server running at http://127.0.1.1:8089 (only local connections)')
-        assert stream.toString().contains('TCP server running at tcp://127.0.1.1:9011 (only local connections)')
+        assert stream.toString().contains(String.format('Web Console server running at http://%s:8089 (only local ' +
+                'connections)', Inet4Address.getLocalHost().getHostAddress()))
+        assert stream.toString().contains(String.format('TCP server running at tcp://%s:9011 (only local ' +
+                'connections)',  Inet4Address.getLocalHost().getHostAddress()))
         stop()
     }
 }
