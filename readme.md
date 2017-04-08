@@ -16,15 +16,11 @@ apply plugin: 'h2'
 
 buildscript {
     repositories {
-        add(new org.apache.ivy.plugins.resolver.URLResolver()) {
-            name = 'GitHub'
-            addArtifactPattern 'http://cloud.github.com/downloads/[organisation]/[module]/[module]-[revision].[ext]'
-        }
-        mavenCentral() // or alternatively your own maven resolver
+        maven { url 'https://jitpack.io' }
     }
 
     dependencies {
-        classpath 'jamescarr:h2-gradle-plugin:0.8.2'
+        classpath 'com.github.VmickaelV:h2-gradle-plugin:0.8.3'
         classpath 'com.h2database:h2:1.3.164'  // choose your own version
     }
 }
