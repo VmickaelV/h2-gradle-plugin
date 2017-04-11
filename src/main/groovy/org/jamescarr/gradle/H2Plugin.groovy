@@ -34,6 +34,7 @@ class H2Plugin implements Plugin<Project> {
     }
 
     private void configureStartTask(Project project) {
+        String rootDir = "."
         project.task(H2_START_TASK_NAME) {
             description = 'Starts an embedded h2 database.'
             group = H2_CONFIGURATION_NAME
