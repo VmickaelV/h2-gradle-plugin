@@ -1,14 +1,11 @@
 package org.jamescarr.gradle
 
-import org.junit.Test
-import org.gradle.testfixtures.ProjectBuilder
 import org.gradle.tooling.BuildLauncher
-import org.gradle.tooling.ProjectConnection
 import org.gradle.tooling.GradleConnector
+import org.gradle.tooling.ProjectConnection
+import org.junit.AfterClass
 import org.junit.BeforeClass
-import org.testng.annotations.AfterClass
-import org.gradle.GradleLauncher
-import org.junit.After
+import org.junit.Test
 
 class StartH2TaskTest {
     static BuildLauncher launcher
@@ -16,7 +13,7 @@ class StartH2TaskTest {
     private static final ByteArrayOutputStream stream = new ByteArrayOutputStream()
 
     @BeforeClass
-    static void beforeAll(){
+    static void beforeAll() {
         GradleConnector connector = GradleConnector.newConnector()
         installLocally(connector)
         connector.forProjectDirectory(new File("src/test/resources/basic-project"))
@@ -24,24 +21,27 @@ class StartH2TaskTest {
         launcher = connection.newBuild()
         launcher.setStandardOutput(stream)
     }
+
     @AfterClass
-    static void after(){
+    static void after() {
         connection.close()
     }
-    void stop(){
+
+    void stop() {
         launcher.forTasks("h2stop")
         launcher.run()
-
     }
-    static void installLocally(GradleConnector conn){
+
+    static void installLocally(GradleConnector conn) {
         conn.forProjectDirectory(new File("."))
         ProjectConnection connection = conn.connect()
         BuildLauncher launcher = connection.newBuild()
         launcher.forTasks("install")
         launcher.run()
     }
+
     @Test
-    public void "should have h2start and h2stop tasks"(){
+    public void "should have h2start and h2stop tasks"() {
         launcher.forTasks("tasks")
         launcher.run()
 
@@ -51,7 +51,7 @@ class StartH2TaskTest {
     }
 
     @Test
-    void "h2start task should start an h2 database tcp server"(){
+    void "h2start task should start an h2 database tcp server"() {
         launcher.forTasks("h2start")
         launcher.run()
 
@@ -59,7 +59,7 @@ class StartH2TaskTest {
         assert stream.toString().contains(String.format('Web Console server running at http://%s:8089 (only local ' +
                 'connections)', Inet4Address.getLocalHost().getHostAddress()))
         assert stream.toString().contains(String.format('TCP server running at tcp://%s:9011 (only local ' +
-                'connections)',  Inet4Address.getLocalHost().getHostAddress()))
+                'connections)', Inet4Address.getLocalHost().getHostAddress()))
         stop()
     }
 }
