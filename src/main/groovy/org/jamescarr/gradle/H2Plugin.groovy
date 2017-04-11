@@ -5,6 +5,8 @@ import org.gradle.api.Project
 import org.h2.tools.RunScript
 import org.h2.tools.Server
 
+import java.nio.charset.StandardCharsets
+
 class H2Plugin implements Plugin<Project> {
     static final H2_CONFIGURATION_NAME = 'h2'
 
@@ -44,7 +46,7 @@ class H2Plugin implements Plugin<Project> {
                     new File("./${databaseName}.h2.db").delete()
                     project.h2.scripts.each { script ->
                         RunScript.execute("jdbc:h2:tcp://localhost:${project.h2.ports.tcp}/${databaseName}", "sa", "",
-                                "${rootDir}/${script}", 'UTF-8', false)
+                                "${rootDir}/${script}", StandardCharsets.UTF_8, false)
                     }
                 }
             }

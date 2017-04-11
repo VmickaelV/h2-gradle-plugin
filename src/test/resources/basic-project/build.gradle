@@ -7,7 +7,7 @@ buildscript {
     }
 
     dependencies {
-        def currentVersion = '0.8.4'
+        def currentVersion = '0.8.3'
         classpath "jamescarr:h2-gradle-plugin:${currentVersion}-SNAPSHOT"
         classpath 'com.h2database:h2:1.3.164'  // choose your own version
     }
