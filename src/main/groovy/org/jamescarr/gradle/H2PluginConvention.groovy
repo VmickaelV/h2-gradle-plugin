@@ -27,9 +27,6 @@ class H2PluginConvention {
     }
 
     def methodMissing(String databaseName, args) {
-        println "H2PluginConvention.methodMissing"
-        println "databaseName = [$databaseName], args = [$args]"
-
         def closure = args[0]
 
         closure.resolveStrategy = Closure.DELEGATE_FIRST
