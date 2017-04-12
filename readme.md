@@ -2,7 +2,7 @@
 
 ![H2 Logo](http://www.h2database.com/html/images/h2-logo.png)
 
-[![Build Status](https://secure.travis-ci.org/VmickaelV/h2-gradle-plugin.png?branch=master)](http://travis-ci.org/VmickaelV/h2-gradle-plugin)
+[![Build Status](https://secure.travis-ci.org/VmickaelV/h2-gradle-plugin.png?branch=dev)](http://travis-ci.org/VmickaelV/h2-gradle-plugin)
 
 This plugin provides the capability of running and populating an embedded H2 database as part of a gradle build,
 perfect for integration testing with embedded web containers.
@@ -20,7 +20,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.github.VmickaelV:h2-gradle-plugin:0.8.3'
+        classpath 'com.github.VmickaelV:h2-gradle-plugin:dev-SNAPSHOT'
         classpath 'com.h2database:h2:1.3.164'  // choose your own version
     }
 }
