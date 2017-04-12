@@ -4,10 +4,6 @@ class H2PluginConvention {
     def scripts = [:]
     def ports = [web: 8082, tcp: 9092]
 
-//    def getScripts() {
-//        return scripts
-//    }
-
     def getTcpPort() {
         return ports.tcp
     }
