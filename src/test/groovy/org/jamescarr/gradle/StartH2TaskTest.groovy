@@ -41,7 +41,7 @@ class StartH2TaskTest {
     }
 
     @Test
-    public void "should have h2start and h2stop tasks"() {
+    void "should have h2start and h2stop tasks"() {
         launcher.forTasks("tasks")
         launcher.run()
 

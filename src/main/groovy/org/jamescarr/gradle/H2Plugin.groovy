@@ -9,8 +9,6 @@ import java.nio.charset.StandardCharsets
 
 class H2Plugin implements Plugin<Project> {
     static final H2_CONFIGURATION_NAME = 'h2'
-
-
     static final H2_START_TASK_NAME = 'h2start'
     static final H2_STOP_TASK_NAME = 'h2stop'
 

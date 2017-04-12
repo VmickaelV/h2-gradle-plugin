@@ -40,14 +40,12 @@ class H2PluginConventionTest {
     @Test
     void "verify web and tcp ports have defaults set"() {
         convention.h2 {
-
-            quickvin {
-                scripts = ['a/b/c.sql', 'd/e/f.sql']
-            }
         }
 
         assert convention.ports.web == 8082
         assert convention.ports.tcp == 9092
+
+        assert convention.scripts.size() == 0
     }
 
 }
