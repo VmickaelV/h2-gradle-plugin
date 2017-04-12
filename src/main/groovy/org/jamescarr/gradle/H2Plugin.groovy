@@ -35,6 +35,7 @@ class H2Plugin implements Plugin<Project> {
 
     private void configureStartTask(Project project) {
         String rootDir = project.buildDir.absolutePath
+        println rootDir
         project.task(H2_START_TASK_NAME) {
             description = 'Starts an embedded h2 database.'
             group = H2_CONFIGURATION_NAME
@@ -42,6 +43,7 @@ class H2Plugin implements Plugin<Project> {
                 Server.main("-baseDir", rootDir, "-tcp", "-web", "-tcpPort", "${project.h2.ports.tcp}", "-webPort",
                         "${project.h2.ports.web}")
                 project.h2.scripts.each { databaseName, scripts ->
+                    println databaseName
                     new File("./${databaseName}.h2.db").delete()
                     project.h2.scripts.each { script ->
                         RunScript.execute("jdbc:h2:tcp://localhost:${project.h2.ports.tcp}/${databaseName}", "sa", "",
